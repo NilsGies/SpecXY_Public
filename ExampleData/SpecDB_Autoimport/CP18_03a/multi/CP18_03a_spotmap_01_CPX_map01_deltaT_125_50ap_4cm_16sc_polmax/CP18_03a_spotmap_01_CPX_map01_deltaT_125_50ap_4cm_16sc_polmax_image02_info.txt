@@ -1,0 +1,10 @@
+Image 3	0
+Pos. X	3330.089767
+Pos. Y	2509.279100
+Size X:	1961.000000
+Size Y:	2048.000000
+Bytes:	12050486
+PixelSizeX:	2.628677
+PixelSizeY:	2.628196
+Type:	257
+ImageID:	2

@@ -1,0 +1,12 @@
+﻿Object,Active,Legend,LegendStr,R,G,B,LineWidth,LineStyle,FaceAlpha
+Spectra,0,0,,0.8,0.8,0.8,0.2,-,0.2
+MeanSpectrum,1,0,Mean,0,0,0,3,-,0.2
+Sum,0,0,Sum,0,0,0,2,-,0.2
+Raw,0,0, Raw,0,0,0,2,-,0.2
+Baseline,0,0, Baseline,1,0,0,2,--,0.2
+alpha,0,0,,1,0,0,2,-,0.2
+beta,0,0,,0,1,0,2,-,0.2
+gamma,0,0,,0,0,1,2,-,0.2
+Peaks,0,0,,0,0,0,2,Xline,0.2
+DeconPeaksSum,1,0, DeconSum,0,0,0,2,-,0.2
+DeconPeaksSingle,1,0, DeconPeak,0,0,0,1,A-,0.2

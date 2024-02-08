@@ -1,0 +1,246 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration build-checksum="1594244367" file="/Users/nils/Documents/GitHub/SpecXY_Public/Program/SpecXY.prj" location="/Users/nils/Documents/GitHub/SpecXY_Public/Program" name="SpecXY" preferred-package-location="/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>SpecXY</param.appname>
+    <param.icon>${PROJECT_ROOT}/SpecXY_resources/icon.icns</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}/SpecXY_resources/icon_48.png</file>
+      <file>${PROJECT_ROOT}/SpecXY_resources/icon_32.png</file>
+      <file>${PROJECT_ROOT}/SpecXY_resources/icon_24.png</file>
+      <file>${PROJECT_ROOT}/SpecXY_resources/icon_16.png</file>
+    </param.icons>
+    <param.version>1.00.40208</param.version>
+    <param.authnamewatermark>Nils B. Gies</param.authnamewatermark>
+    <param.email>nils.gies@unibe.ch</param.email>
+    <param.company>SpecXY</param.company>
+    <param.summary>SpecXY is THE! tool for working with spectroscopic data</param.summary>
+    <param.description>SpecXY is a user-friendly software solution for preparing, editing, extracting and comparing (spatially resolved) spectral datasets. SpecXY consists of three main modules for processing spectroscopic data. (1) The first module, SpecMaps, is designed for the investigation of spatially resolved spectroscopic data and allows various maps to be generated. This module provides a quick and efficient way to compare signals between different areas and extract average spectra for further calculations. It can be used to visualise and classify spectra, perform peak deconvolution from pixel spectra and to correlate spectral data with chemical data (e.g., from EMPA, LA-ICP-MS) or other numerical data of the same area. SpecMaps can handle any data type containing a map of wavenumber, energy, frequency, wavelength and intensity. (2) The second module, SpecDB, is designed as a spectra database with the ability to perform manipulations, advanced peak deconvolution, calculations (e.g., H2O quantification), match unknown spectra or visualise and compare important features in selected spectra. (3) GeoCPlot allows to classify data and helps to visualize data in correlation matrices.</param.description>
+    <param.screenshot>${PROJECT_ROOT}/Dev/Symbols/SpecXY_splash_v1_00.jpg</param.screenshot>
+    <param.guid />
+    <param.installpath.string>/SpecXY/</param.installpath.string>
+    <param.installpath.combo>option.installpath.systemwideapp</param.installpath.combo>
+    <param.logo>${PROJECT_ROOT}/Dev/Symbols/SpecXY_Install_Installation Log-02.png</param.logo>
+    <param.install.notes />
+    <param.target.install.notes>In the following directions, replace MR/v911 by the directory on the target machine where MATLAB is installed, or MR by the directory where the MATLAB Runtime is installed.
+
+If the environment variable DYLD_LIBRARY_PATH is undefined, set it to the following string:
+
+MR/v911/runtime/maci64:MR/v911/sys/os/maci64:MR/v911/bin/maci64
+
+If it is defined, set it to the following:
+
+${DYLD_LIBRARY_PATH}:MR/v911/runtime/maci64:MR/v911/sys/os/maci64:MR/v911/bin/maci64</param.target.install.notes>
+    <param.intermediate>/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing</param.intermediate>
+    <param.files.only>/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_redistribution_files_only</param.files.only>
+    <param.output>/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_redistribution</param.output>
+    <param.logdir>/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages>
+      <item>&lt;package displayname="Hyperspectral Imaging Library Support Package" enabled="true" name="Hyperspectral Imaging Library Support Package" product="Image Processing Toolbox"/&gt;</item>
+    </param.support.packages>
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>SpecXY_1_00_40208_MacOS</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>false</param.windows.command.prompt>
+    <param.create.log>true</param.create.log>
+    <param.log.file>mylog1.log</param.log.file>
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments</param.help.text>
+    <unset>
+      <param.company />
+      <param.guid />
+      <param.installpath.combo />
+      <param.install.notes />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/SpecXY.mlapp</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}/Dev/MapPresetTable.csv</file>
+      <file>${PROJECT_ROOT}/Dev/PeakDB.csv</file>
+      <file>${PROJECT_ROOT}/Dev/SpecXY_PlotSettings.csv</file>
+      <file>${PROJECT_ROOT}/Dev/XMap_ColorMaps.txt</file>
+      <file>${PROJECT_ROOT}/Dev/parfor_progress.txt</file>
+      <file>${PROJECT_ROOT}/Functions/fix_mat.py</file>
+      <file>${PROJECT_ROOT}/Functions/fixname_single_file.py</file>
+      <file>${PROJECT_ROOT}/Functions/opusread_NG.py</file>
+    </fileset.resources>
+    <fileset.package>
+      <file>${PROJECT_ROOT}/Dev/MapPresetTable.csv</file>
+      <file>${PROJECT_ROOT}/Dev/PeakDB.csv</file>
+      <file>${PROJECT_ROOT}/Dev/SpecXY_PlotSettings.csv</file>
+      <file>${PROJECT_ROOT}/Dev/XMap_ColorMaps.txt</file>
+    </fileset.package>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_FocusHorizontal.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_Shaded_Circle.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_Shaded_Square.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_Share.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_closeMini.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/XXX_images.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_3D Figure.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Add Column-32.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Add Spec.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Clear Mask.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Col Filter.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Delete Column-33.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Delete Spec.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Filter Group And.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Filter Group Or.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Filter Group not And.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Filter Group not Or.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_GeoCPlot.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Import Specs From Folder.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Integration A.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Integration B.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Integration C.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Invert Mask.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Lin A.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Lin C.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Mask Selection.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Reset Col. Filter.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Save As.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Save.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Simple Plot.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_SimpleDecon.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_SpecVis-39.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Spotvis.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Stacked Plot.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_Substract from Mask.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_logo-14.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_logo.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_logoSpecDB.png</file>
+      <file>${PROJECT_ROOT}/Dev/Symbols/symbols_1_logoSpecXY.png</file>
+      <file>${PROJECT_ROOT}/Functions/AddByteOrder.m</file>
+      <file>${PROJECT_ROOT}/Functions/BaselineFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/CalcMatrixFromSpec.m</file>
+      <file>${PROJECT_ROOT}/Functions/CorPlotFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/DeconPlotFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/GetBaselineFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/GetPlotSettingsFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/OH_calc_function_NG.m</file>
+      <file>${PROJECT_ROOT}/Functions/PlotPeaksFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/PlotSpectra_fun.m</file>
+      <file>${PROJECT_ROOT}/Functions/PlotTernFun.m</file>
+      <file>${PROJECT_ROOT}/Functions/ReadColorMaps.m</file>
+      <file>${PROJECT_ROOT}/Functions/ReadPeakdata_fun.m</file>
+      <file>${PROJECT_ROOT}/Functions/alr.m</file>
+      <file>${PROJECT_ROOT}/Functions/alr_inv.m</file>
+      <file>${PROJECT_ROOT}/Functions/baseline_raman.m</file>
+      <file>${PROJECT_ROOT}/Functions/calculate_pixel.m</file>
+      <file>${PROJECT_ROOT}/Functions/clr.m</file>
+      <file>${PROJECT_ROOT}/Functions/deg2rad.m</file>
+      <file>${PROJECT_ROOT}/Functions/extractpositional.m</file>
+      <file>${PROJECT_ROOT}/Functions/fcnCorrMatrixPlot_NG.m</file>
+      <file>${PROJECT_ROOT}/Functions/fractions.m</file>
+      <file>${PROJECT_ROOT}/Functions/get_best_start_guess.m</file>
+      <file>${PROJECT_ROOT}/Functions/ilc.m</file>
+      <file>${PROJECT_ROOT}/Functions/ilr.m</file>
+      <file>${PROJECT_ROOT}/Functions/ilrinv.m</file>
+      <file>${PROJECT_ROOT}/Functions/iterative_Gauss_fit.m</file>
+      <file>${PROJECT_ROOT}/Functions/linCorrect.m</file>
+      <file>${PROJECT_ROOT}/Functions/lin_BL_corr.m</file>
+      <file>${PROJECT_ROOT}/Functions/multifit_dev3.m</file>
+      <file>${PROJECT_ROOT}/Functions/parfor_progress.m</file>
+      <file>${PROJECT_ROOT}/Functions/peakfit.m</file>
+      <file>${PROJECT_ROOT}/Functions/remCont2.m</file>
+      <file>${PROJECT_ROOT}/Functions/spa_load.m</file>
+      <file>${PROJECT_ROOT}/Functions/split_label_lines.m</file>
+      <file>${PROJECT_ROOT}/Functions/ternaxes.m</file>
+      <file>${PROJECT_ROOT}/Functions/terncoords.m</file>
+      <file>${PROJECT_ROOT}/Functions/ternlabel.m</file>
+      <file>${PROJECT_ROOT}/Functions/ternplot.m</file>
+      <file>${PROJECT_ROOT}/Functions/trapz_BC.m</file>
+      <file>${PROJECT_ROOT}/Modules/ClassificationModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/CombineColModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/CorrelationModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/ExportModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/GeoCPlot.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/IntegrationSetting.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/MapCalculator.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/MapMatchModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/ReshapeModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/SimpleDeconModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/SpecDB.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/SpecMaps.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/SpecVis.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/SpotVisModule.mlapp</file>
+      <file>${PROJECT_ROOT}/Modules/ThicknessCorrection.mlapp</file>
+      <file>/Users/nils/Documents/MATLAB/PeakFinder_/val2ind.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyper/+hyper/+internal/hasWavelength.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyper/+hyper/+internal/wavelengthUnitConversion.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyper/fippi.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyper/hypermnf.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyper/hyperpca.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/+hyper/+internal/getGaseousAbsorption.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/+hyper/+internal/getReqFieldNames.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/+hyper/+internal/getSolarIrradiance.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/+hyper/+internal/isenvi.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/+hyper/+internal/readmtlfile.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/enviinfo.m</file>
+      <file>/Users/nils/Documents/MATLAB/SupportPackages/R2021b/toolbox/images/supportpackages/hyperspectral/hyperformats/hypercube.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing" name="readme.txt" optional="true">/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing/readme.txt</file>
+      <file location="/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing" name="SpecXY.app" optional="false">/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing/SpecXY.app</file>
+      <file location="/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing" name="splash.png" optional="false">/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing/splash.png</file>
+      <file location="/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing" name="run_SpecXY.sh" optional="false">/Users/nils/Documents/GitHub/SpecXY_Public/Installation_Files/SpecXY/for_testing/run_SpecXY.sh</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Applications/MATLAB_R2021b.app</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>12.0.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

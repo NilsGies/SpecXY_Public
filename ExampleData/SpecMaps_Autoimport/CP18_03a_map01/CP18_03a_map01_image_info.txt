@@ -1,0 +1,10 @@
+Image 1	0
+Pos. X	11085.267716
+Pos. Y	9648.983610
+Size X:	2048.000000
+Size Y:	1696.000000
+Bytes:	10420278
+PixelSizeX:	2.892285
+PixelSizeY:	2.891983
+Type:	257
+ImageID:	1
