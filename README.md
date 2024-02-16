@@ -1,4 +1,4 @@
-# SpecXY_Public
+# SpecXY
 SpecXY is a user-friendly software solution for preparing
  editing extracting and comparing (spatially resolved) spectral datasets. SpecXY consists of three main modules for processing spectroscopic data. 
  
