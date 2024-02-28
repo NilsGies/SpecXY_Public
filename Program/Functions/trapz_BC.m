@@ -10,9 +10,9 @@ for m=1:width(y)
     y2= y(~isnan(y(:,m)),m);
 
     if x2(1)>x2(end)
-        x2=flipud(x);
-        y2=flipud(y);
+        x2=flipud(x2);
+        y2=flipud(y2);
     end
 
-    output(:,m)=trapz(x2,linCorrect(y2(:,m)));
+    output(:,m)=trapz(x2,linCorrect(y2));
 end

@@ -18,7 +18,7 @@ function [OH_ppm,results]=OH_calc_function_NG(intensity,varargin)
 %   -'mineral' default: 'CPX' ['Cpx','Opx','Grt' 'Rutil']
 %   -'density' [g/cm^3] default 3.3 or depending on mineral
 %   -'int_range' [min max] default int_range=[3050 3800]
-%   -'lincor' 0,1 linear background correction default lincor=0
+%   -'lincor' 0,1 linear background correction default lincor=1
 %   -'custom_I' 
 %   -'full_report' [0]-simple OH table;[1]- ABS OH table;[2]- extended table;[3]- full struc
 %   -'sample' sets the sample name in the detailed report table
@@ -71,7 +71,7 @@ end
 mineral='Unknown';
 sample='Unknown';
 thickness=10000;
-lincor=0;
+lincor=1;
 M_calc=18.01528;
 int_range=[3050 3800];
 Cust_molar_absorption_coefficient=[];
@@ -398,13 +398,6 @@ else
 end
 end
 
-
-if lincor==true
-    alpha=lincor_fun(alpha);
-    beta=lincor_fun(beta);
-    gamma=lincor_fun(gamma);
-end
-
 %%
 wn_alpha=wn_alpha(idx_range_alpha);
 wn_beta=wn_beta(idx_range_beta);
@@ -437,20 +430,31 @@ molar_absorption_coefficient_alpha=[repmat(molar_absorption_coefficient,(size(24
 molar_absorption_coefficient_beta=[repmat(molar_absorption_coefficient,(size(246.6*(3753 - wn_beta)'))); 246.6*(3753 - wn_beta)'; 382*(3832 - wn_beta)'];
 molar_absorption_coefficient_gamma=[repmat(molar_absorption_coefficient,(size(246.6*(3753 - wn_gamma)'))); 246.6*(3753 - wn_gamma)'; 382*(3832 - wn_gamma)'];
 
-
+if lincor==false
 alpha_wt_pct = trapz(wn_alpha,(M_calc.*alpha...
     ./((thickness_alpha/10000).*(density/0.001)'.*molar_absorption_coefficient_alpha')).*10^6)'/10000;
 beta_wt_pct = trapz(wn_beta,(M_calc.*beta...
     ./((thickness_beta/10000).*(density/0.001)'.*molar_absorption_coefficient_beta')).*10^6)'/10000;
-gamma_wt_pct = trapz(wn_gamma,(M_calc.*beta...
+gamma_wt_pct = trapz(wn_gamma,(M_calc.*gamma...
     ./((thickness_gamma/10000).*(density/0.001)'.*molar_absorption_coefficient_gamma')).*10^6)'/10000;
+else
+alpha_wt_pct = trapz_BC(wn_alpha,(M_calc.*alpha...
+    ./((thickness_alpha/10000).*(density/0.001)'.*molar_absorption_coefficient_alpha')).*10^6)'/10000;
+beta_wt_pct = trapz_BC(wn_beta,(M_calc.*beta...
+    ./((thickness_beta/10000).*(density/0.001)'.*molar_absorption_coefficient_beta')).*10^6)'/10000;
+gamma_wt_pct = trapz_BC(wn_gamma,(M_calc.*gamma...
+    ./((thickness_gamma/10000).*(density/0.001)'.*molar_absorption_coefficient_gamma')).*10^6)'/10000;
+end
 
-
+if lincor==false
 alpha_wt_Paterson=(Xi/(150*E))*trapz(wn_alpha,(alpha./thickness_alpha/10000)./(3780-wavenumber(idx_range_alpha)))*10000;
 beta_wt_Paterson=(Xi/(150*E))*trapz(wn_beta,(beta./thickness_beta/10000)./(3780-wavenumber(idx_range_beta)))*10000;
 gamma_wt_Paterson=(Xi/(150*E))*trapz(wn_gamma,(gamma./thickness_gamma/10000)./(3780-wavenumber(idx_range_gamma)))*10000;
-
-    
+else
+alpha_wt_Paterson=(Xi/(150*E))*trapz_BC(wn_alpha,(alpha./thickness_alpha/10000)./(3780-wavenumber(idx_range_alpha)))*10000;
+beta_wt_Paterson=(Xi/(150*E))*trapz_BC(wn_beta,(beta./thickness_beta/10000)./(3780-wavenumber(idx_range_beta)))*10000;
+gamma_wt_Paterson=(Xi/(150*E))*trapz_BC(wn_gamma,(gamma./thickness_gamma/10000)./(3780-wavenumber(idx_range_gamma)))*10000;
+end
 
  
 [OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,alpha,beta,gamma,wn_alpha,wn_beta,wn_gamma,thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct,alpha_wt_Paterson,beta_wt_Paterson,gamma_wt_Paterson);
@@ -475,9 +479,15 @@ OH_ppm=OH_wt_pct.*10000;
 
 OH_results=[ OH_wt_pct OH_ppm];
 if numel(alpha)>1
+    if lincor==false
     abs_alpha=trapz(wn_alpha,alpha/thickness_alpha*10000);
     abs_beta=trapz(wn_beta,beta/thickness_beta*10000);
     abs_gamma=trapz(wn_gamma,gamma/thickness_gamma*10000);
+    else
+        abs_alpha=trapz_BC(wn_alpha,alpha/thickness_alpha*10000);
+    abs_beta=trapz_BC(wn_beta,beta/thickness_beta*10000);
+    abs_gamma=trapz_BC(wn_gamma,gamma/thickness_gamma*10000);
+    end
 else
     abs_alpha=alpha/thickness_alpha*10000;
     abs_beta=beta/thickness_beta*10000;
@@ -537,17 +547,4 @@ abs_abc=num2cell(sum([abs_alpha abs_beta abs_gamma])');
     results=results_0;
     end
 
-
-function y_cor=lincor_fun(y)
-y_cor=zeros(size(y));
-if not(isempty(y))
-for q=1:width(y)
-    correction_line=linspace((y(1,q)),y(end,q),length(y));
-    y(:,q)=y(:,q)-correction_line';
-    y(( y(:,q)<0),q)=0;
-    y_cor(:,q)=y(:,q);
-end
-else
-disp('empty y in lincor_fun')
-end
 

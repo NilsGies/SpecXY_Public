@@ -97,9 +97,9 @@ thickness_state=true; % thickness correction before plotting
 matrix % UI matrix instead selected_map
 alpha % transparency of matrix
 
-%% MatrixLimits=update_MatixLimits(app,sampleinfo);
+%% [MatrixLimits, mapsize]=update_MatixLimits(app,sampleinfo);
 sampleinfo= [selected_sample selected_subsample selected_map selected_submap];
-% returns the matrix xy min max coordinates
+% returns the matrix xy min max coordinates and mapsize
 
 
 %% [x_signal,y_signal,range] = get_specs(app,sampleinfo,xlimits)
