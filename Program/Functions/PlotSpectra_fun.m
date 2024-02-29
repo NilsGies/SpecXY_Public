@@ -18,10 +18,12 @@ if isfield(settings,'YLabel')
 else
     axis2plot.YLabel.String='Absorbance [cm^{-1}]';
 end
-if isfield(settings,'ZLabel')
+
+if isfield(settings,'ZLabel') && isfield(axis2plot,'ZLabel')
     axis2plot.ZLabel.String=settings(1).ZLabel;
-else
+elseif isfield(axis2plot,'ZLabel')
     axis2plot.ZLabel.String='';
+
 end
 
 try
@@ -400,6 +402,7 @@ elseif strcmp(settings(1).type,'3D')
     axis2plot.XLabel.String='Wavenumbers [cm^{-1}]';
     axis2plot.YLabel.String='';
     axis2plot.ZLabel.String='Absorbance [cm^{-1}]';
+
 if  isfield(settings,'XLabel')
     axis2plot.XLabel.String=settings(1).XLabel;
 else
@@ -408,14 +411,13 @@ end
 
 if isfield(settings,'YLabel')
     axis2plot.YLabel.String=settings(1).ZLabel;
-        axis2plot.ZLabel.String='';
 else
+    axis2plot.ZLabel.String='';
 end
 if isfield(settings,'ZLabel')
     axis2plot.ZLabel.String=settings(1).YLabel;
 else
-        axis2plot.YLabel.String='Absorbance [cm^{-1}]';
-
+    axis2plot.YLabel.String='Absorbance [cm^{-1}]';
 end
 
 end
