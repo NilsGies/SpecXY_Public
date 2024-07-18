@@ -13,6 +13,14 @@ SpecXY is a user-friendly software solution for preparing
  
 This repository contains the source code of the latest stable version of SpecXY, binaries for MacOS and Windows, example data.  Furthermore, the preliminary documentation & user guide, which is still a work in progress and will be updated in the future, gives an introduction to the software, common workflows and the API.
 
+We recommend that you use the following citations in your publications or presentations when referring to data processed with SpecXY, e.g., Spectroscopic data were processed with SpecXY (Gies et al. 2024).
+
+Nils B. Gies, Pierre Lanari, Jörg Hermann, A workflow and software solution for spatially resolved spec- troscopic and numerical data (SpecXY), Computers & Geosciences, Volume 189, 2024, 105626, ISSN 0098-3004, https://doi.org/10.1016/j.cageo.2024.105626
+
+It is not recommended to cite SpecXY only in the supplementary material, as these citations are not taken into account by citation statistics platforms. 
+
+We ask you to use the official SpecXY logo in your talk/poster together with the references if the images have been generated with SpecXY.
+
 
 Copyright © 2024 University of Bern, Institute of Geological Sciences, Nils B. Gies 
 

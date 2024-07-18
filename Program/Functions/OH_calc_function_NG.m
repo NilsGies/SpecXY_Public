@@ -64,9 +64,7 @@ function [OH_ppm,results]=OH_calc_function_NG(intensity,varargin)
 %     error('ff_mat2tab:TooManyOptionalParameters', ...
 %         'Too many input arguments. Allowed options are: mineral, density, thickness, lincor');
 % end
-if length(intensity(:,1))<length(intensity(1,:)')
-    intensity=intensity';
-end
+
 
 mineral='Unknown';
 sample='Unknown';
@@ -127,7 +125,12 @@ if ~exist("wavenumber","var")
     wavenumber=1:size(idx_range,1);
 end
 
-if size(wavenumber,1)<size(wavenumber,2)
+%ATH find fix
+if length(intensity(:,1))<length(intensity(1,:)') && not(numel(thickness)==size(intensity,2))
+    intensity=intensity';
+end
+
+if size(wavenumber,1)<size(wavenumber,2) && not(numel(thickness)==size(wavenumber,2))
     wavenumber=wavenumber';
 end
 
@@ -200,7 +203,7 @@ switch mineral
         mineral='grt';
         % table_row_names={'Maldener et al. (2003) Grt-Sps 4880','Maldener et al. (2003) Grt 14400','Bell et al. (1995) Grt 6700'};
         % molar_absorption_coefficient= [Cust_molar_absorption_coefficient 4880 14400 6700]';
-        table_row_names={'Maldener et al. (2003) Grt-Sps 4880','Maldener et al. (2003) Grt 14400','Bell et al. (1995) Grt 6700’,’Rossman and Aines (1991) Grossular 35745’,’Rossman and Aines (1991) Hydrogrossular 18955’,’Rossman (1988) Spessartine 35152'};
+        table_row_names={'Maldener et al. (2003) Grt-Sps 4880','Maldener et al. (2003) Grt 14400','Bell et al. (1995) Grt 6700', 'Rossman and Aines (1991) Grossular 35745','Rossman and Aines (1991) Hydrogrossular 18955','Rossman (1988) Spessartine 35152'};
         molar_absorption_coefficient= [Cust_molar_absorption_coefficient 4880 14400 6700 35745 18955 35152]';
 
     case Rutile_test
@@ -525,6 +528,24 @@ abs_abc=num2cell(sum([abs_alpha abs_beta abs_gamma])');
     results.data.density=density;
     results.data.intensity=intensity;
     results.data.wavenumber=wavenumber;
+
+    %% added
+
+    %     results.data.baseline_y=intensity(wavenumber>min(int_range) & wavenumber<(max(int_range)))-linCorrect(intensity(wavenumber>min(int_range) & wavenumber<(max(int_range)))); %Baseline
+    %     results.data.baseline_x=wavenumber(wavenumber>min(int_range) & wavenumber<(max(int_range))); %Baseline
+
+    if numel(wavenumber)>1
+        results.data.baseline_y=intensity(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2),:)-linCorrect(intensity(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2))); %Baseline
+        results.data.baseline_x=wavenumber(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2)); %Baseline
+    else
+        results.data.baseline_y=nan; %Baseline
+        results.data.baseline_x=nan; %Baseline
+    end
+
+    %% added end
+
+
+
     results.data.alpha=alpha;
     results.data.beta=beta;
     results.data.gamma=gamma;
