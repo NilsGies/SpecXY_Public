@@ -5,8 +5,8 @@ SpecXY is a user-friendly software solution for preparing
  1) The first module SpecMaps 
  is designed for the investigation of spatially resolved spectroscopic data and allows various maps to be generated. This module provides a quick and efficient way to compare signals between different areas and extract average spectra for further calculations. It can be used to visualise and classify spectra perform peak deconvolution from pixel spectra and to correlate spectral data with chemical data (e.g. from EMPA LA-ICP-MS) or other numerical data of the same area. SpecMaps can handle any data type containing a map of wavenumber energy frequency wavelength and intensity. 
  
- 2) The second moduleSpecDB
- is designed as a spectra database with the ability to perform manipulations advanced peak deconvolution calculations (e.g.H2O quantification) match unknown spectra or visualise and compare important features in selected spectra. 
+ 2) The second module SpecDB
+ is designed as a spectra database with the ability to perform manipulations, advanced peak deconvolution, calculations (e.g.H2O quantification), match unknown spectra or visualise and compare important features in selected spectra. 
  
  3) GeoCPlot allows to classify data and helps to visualise data in correlation matrices.
  
