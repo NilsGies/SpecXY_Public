@@ -1,7 +1,9 @@
 # SpecXY
+## What is SpecXY?
 SpecXY is a user-friendly software solution for preparing
  editing extracting and comparing (spatially resolved) spectral datasets. SpecXY consists of three main modules for processing spectroscopic data. 
- 
+
+ ### Highlights of SpecXY
  1) The first module SpecMaps 
  is designed for the investigation of spatially resolved spectroscopic data and allows various maps to be generated. This module provides a quick and efficient way to compare signals between different areas and extract average spectra for further calculations. It can be used to visualise and classify spectra perform peak deconvolution from pixel spectra and to correlate spectral data with chemical data (e.g. from EMPA LA-ICP-MS) or other numerical data of the same area. SpecMaps can handle any data type containing a map of wavenumber energy frequency wavelength and intensity. 
  
@@ -10,9 +12,20 @@ SpecXY is a user-friendly software solution for preparing
  
  3) GeoCPlot allows to classify data and helps to visualise data in scatterplot matrices.
  
- 
+## Getting Started
+[Download SpecXY here!](https://github.com/NilsGies/SpecXY_Public/releases/latest).
+
+[Download the peer-reviewed publication here!](https://doi.org/10.1016/j.cageo.2024.105626).
+
 This repository contains the source code of the latest stable version of SpecXY, binaries for MacOS and Windows, example data.  Furthermore, the preliminary documentation & user guide, which is still a work in progress and will be updated in the future, gives an introduction to the software, common workflows and the API.
 
+
+## Report Issues
+Despite our best efforts to test all features and implement routines to prevent errors, as with any complex software, there may still be ways in which users could potentially cause the software to malfunction. If you encounter problems, please send us a description of the issue and an example dataset so that we can work on improving SpecXY. <a href="mailto:nils.gies@unibe.ch?subject=SpecXY">Send us a message here!</a>
+
+
+
+## Citation Guidelines
 We recommend that you use the following citations in your publications or presentations when referring to data processed with SpecXY, e.g., Spectroscopic data were processed with SpecXY (Gies et al. 2024).
 
 Nils B. Gies, Pierre Lanari, Jörg Hermann, A workflow and software solution for spatially resolved spec- troscopic and numerical data (SpecXY), Computers & Geosciences, Volume 189, 2024, 105626, ISSN 0098-3004, https://doi.org/10.1016/j.cageo.2024.105626
