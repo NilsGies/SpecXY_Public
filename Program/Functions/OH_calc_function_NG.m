@@ -126,7 +126,7 @@ if ~exist("wavenumber","var")
 end
 
 %ATH find fix
-if length(intensity(:,1))<length(intensity(1,:)') && not(numel(thickness)==size(intensity,2))
+if length(intensity(:,1))<length(intensity(1,:)') && not(numel(thickness)==size(intensity,2)) &&size(intensity,2)>1&&  size(intensity,2)==size(wavenumber,1) 
     intensity=intensity';
 end
 
@@ -303,7 +303,7 @@ if numel(intensity)==1
      beta_wt_pct = alpha_wt_pct;
      gamma_wt_pct = alpha_wt_pct;
     
-    [OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
+    [OH_ppm, results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
     return
 elseif numel(intensity)==2
     alpha_wt_pct = round((M_calc.*intensity(1))./(thickness_alpha/10000.*(density./0.001).*molar_absorption_coefficient).*10^6./10000,6);
@@ -313,7 +313,7 @@ elseif numel(intensity)==2
     intensity(3)=intensity(2);
     intensity(2)=intensity(1);
 
-    [OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
+    [OH_ppm, results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
     return
 
 elseif numel(intensity)==3
@@ -321,7 +321,7 @@ elseif numel(intensity)==3
     beta_wt_pct = round((M_calc.*intensity(2))./(thickness_beta/10000.*(density./0.001).*molar_absorption_coefficient).*10^6./10000,6);
     gamma_wt_pct = round((M_calc.*intensity(3))./(thickness_gamma/10000.*(density./0.001).*molar_absorption_coefficient).*10^6./10000,6);
   
-    [OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
+    [OH_ppm, results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,intensity(1),intensity(2),intensity(3),[],[],[],thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct);
     return
 end
 
@@ -460,9 +460,9 @@ gamma_wt_Paterson=(Xi/(150*E))*trapz_BC(wn_gamma,(gamma./thickness_gamma/10000).
 end
 
  
-[OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,alpha,beta,gamma,wn_alpha,wn_beta,wn_gamma,thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct,alpha_wt_Paterson,beta_wt_Paterson,gamma_wt_Paterson);
+[OH_ppm, results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,alpha,beta,gamma,wn_alpha,wn_beta,wn_gamma,thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct,alpha_wt_Paterson,beta_wt_Paterson,gamma_wt_Paterson);
  
-function [OH_ppm results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,alpha,beta,gamma,wn_alpha,wn_beta,wn_gamma,thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct,alpha_wt_Paterson,beta_wt_Paterson,gamma_wt_Paterson)
+function [OH_ppm, results]=get_results(full_report,table_row_names,lincor,wavenumber,intensity,molar_absorption_coefficient,int_range,Cust_molar_absorption_coefficient,thickness,sample,mineral_in,density,alpha,beta,gamma,wn_alpha,wn_beta,wn_gamma,thickness_alpha,thickness_beta,thickness_gamma,alpha_wt_pct,beta_wt_pct,gamma_wt_pct,alpha_wt_Paterson,beta_wt_Paterson,gamma_wt_Paterson)
 if numel(alpha)==1
     OH_wt_pct=round((alpha_wt_pct+beta_wt_pct+gamma_wt_pct),6);
     OH_abc_ppm=round([alpha_wt_pct beta_wt_pct gamma_wt_pct]*10000,2);
@@ -526,6 +526,7 @@ abs_abc=num2cell(sum([abs_alpha abs_beta abs_gamma])');
     results.data.thickness=thickness;
     results.data.sample=sample;
     results.data.density=density;
+    intensity=intensity./thickness.*10000;
     results.data.intensity=intensity;
     results.data.wavenumber=wavenumber;
 
@@ -534,7 +535,7 @@ abs_abc=num2cell(sum([abs_alpha abs_beta abs_gamma])');
     %     results.data.baseline_y=intensity(wavenumber>min(int_range) & wavenumber<(max(int_range)))-linCorrect(intensity(wavenumber>min(int_range) & wavenumber<(max(int_range)))); %Baseline
     %     results.data.baseline_x=wavenumber(wavenumber>min(int_range) & wavenumber<(max(int_range))); %Baseline
 
-    if numel(wavenumber)>1
+    if numel(wavenumber)>1   
         results.data.baseline_y=intensity(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2),:)-linCorrect(intensity(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2))); %Baseline
         results.data.baseline_x=wavenumber(any(wavenumber>min(int_range) & wavenumber<(max(int_range)),2)); %Baseline
     else

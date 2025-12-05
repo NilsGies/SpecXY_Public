@@ -4,7 +4,7 @@ Total OT 1450-2350,Integration,1400,2400,1450,2350,1,General
 Epoxy 2750-3000,Integration,2700,3050,2750,3000,1,General
 H2O 3400,Absolute,3050,3720,,3400,1,H2O
 H2O 1630,Absolute,1530,1730,,1630,1,H2O
-OH 4500,Absolute,5500,4250,,4500,1,H2O
+OH 4500,Absolute,4250,5500,,4500,1,H2O
 OH 5200,Absolute,5000,5400,,5200,1,H2O
 Total H2O 3050-3720,Integration,0,,3050,3720,1,CPX
 OT2 1830-2250,Integration,1400,2400,1830,2250,1,CPX
@@ -14,36 +14,62 @@ Amphibole 3686,Absolute,3050,3800,,3686,1,CPX
 Sheetsilicates 3610,Absolute,3050,3800,,3610,1,CPX
 [Fe3+/Al3+ H+ 3645],Absolute,3050,3800,,3645,1,CPX
 [Al/Ti/Cr],Absolute,3050,3800,,3645,1,CPX
+Total OT 1600-2235,Integration,1500,2335,1600,2235,1,Garnet
 Total H2O 3000-3800,Integration,0,,3000,3800,1,Fsp
 Total OT 1450-2350,Integration,1280,2450,1405,1990,1,Fsp
 Epoxy 2750-3000,Integration,2700,3800,2750,3000,1,Fsp
 Epidote,Integration,3000,3800,3315,3400,1,Fsp
 Hydrous Phases,Integration,3050,3800,3580,3730,1,Fsp
 H2O Abs,Absolute,3050,3800,,3400,1,Fsp
-Integration 3313-3408 Al,Integration,1250,3720,3313,3408,1,Qtz
-Integration 3050-3600 H2O,Integration,1250,3720,3050,3600,1,Qtz
-Integration 2700-3000 Epoxy,Integration,1250,3720,2700,3000,1,Qtz
-Integration 2015-2050 OT Orientation,Integration,1250,2400,2015,2050,1,Qtz
-Integration 1455-1550 OT Orientation,Integration,1250,2400,1455,1550,1,Qtz
-Integration 2200-2270 OT Orientation,Integration,1250,2400,2200,2270,1,Qtz
-Integration 2015-2050 OT Orientation,Integration,1250,2400,2015,2050,1,Qtz Pegmatite
-Integration 1455-1550 OT Orientation,Integration,1250,2400,1455,1550,1,Qtz Pegmatite
-Integration 2200-2270 OT Orientation,Integration,1250,2400,2200,2270,1,Qtz Pegmatite
-Integration 3340-3460 Al,Integration,3050,3720,3340,3460,1,Qtz Pegmatite
-Integration 3460-3530 Li,Integration,3050,3720,3460,3530,1,Qtz Pegmatite
-Integration 3588-3605 B,Integration,3050,3720,3588,3605,1,Qtz Pegmatite
-Integration 3000-3800 H2O,Integration,1250,4000,3000,3800,1,Qtz Pegmatite
-Integration 2700-3000 Epoxy,Integration,1250,3720,2700,3000,1,Qtz Pegmatite
-TotalH2O_Organics_CO3,Integration,0,,2740,3800,1,BE4
-Organics&CO3 IntMap_2740_3050,Integration,0,,2740,3050,1,BE4
-H2O in Calcite,Integration,3050,3800,3130,3275,1,BE4
-CO3 sym. 2v3 @2875,Integration,0,,2860,2885,1,BE4
-CO3 sym. V1+v3 @2510,Integration,0,,2495,2540,1,BE4
-CO3 sym. V1+v4 @1805,Integration,0,,1765,1835,1,BE4
-Unknown @2370 (H2O?),Integration,0,,2320,2370,1,BE4
-Unknown @2140 (H2O?+CO3?),Integration,0,,2120,2160,1,BE4
+Libowitzky and Rossman (1997) Simplified 3410,Libowitzky and Rossman (1997) Simplified,3800,1200,,3410,1,Fsp
+Integration 3313-3408 Al,Integration,3720,1250,3313,3408,1,Qtz
+Integration 3050-3600 H2O,Integration,3720,1250,3050,3600,1,Qtz
+Integration 2700-3000 Epoxy,Integration,3720,1250,2700,3000,1,Qtz
+Integration 2015-2050 OT Orientation,Integration,2400,1250,2015,2050,1,Qtz
+Integration 1455-1550 OT Orientation,Integration,2400,1250,1455,1550,1,Qtz
+Integration 2200-2270 OT Orientation,Integration,2400,1250,2200,2270,1,Qtz
+Integration 2015-2050 OT Orientation,Integration,2400,1250,2015,2050,1,Qtz Pegmatite
+Integration 1455-1550 OT Orientation,Integration,2400,1250,1455,1550,1,Qtz Pegmatite
+Integration 2200-2270 OT Orientation,Integration,2400,1250,2200,2270,1,Qtz Pegmatite
+Integration 3340-3460 Al,Integration,3720,3050,3340,3460,1,Qtz Pegmatite
+Integration 3460-3530 Li,Integration,3720,3050,3460,3530,1,Qtz Pegmatite
+Integration 3588-3605 B,Integration,3720,3050,3588,3605,1,Qtz Pegmatite
+Integration 3000-3800 H2O,Integration,4000,1250,3000,3800,1,Qtz Pegmatite
+Integration 2700-3000 Epoxy,Integration,3720,1250,2700,3000,1,Qtz Pegmatite
+Total H2O 3000-3800,Integration,0,,3000,3800,1,Fsp2
+Integration 2700-3000 Epoxy,Integration,3720,1250,2700,3000,1,Fsp2
+Fsp OT,Integration,1280,2450,1400,2000,1,Fsp2
+H2O Abs,Absolute,3050,3800,,3400,1,Fsp2
+Libowitzky and Rossman (1997) Simplified 3410,Libowitzky and Rossman (1997) Simplified,3800,1200,,3410,1,Fsp2
+Biotite,Integration,3050,3800,3500,3720,1,Fsp2
+Epidote,Integration,3000,3800,3315,3400,1,Fsp2
 Total H2O 3050-3720,Integration,0,,3050,3720,1,Augite
 OT2 1830-2250,Integration,1400,2400,1830,2250,1,Augite
 OT1 1450-1830,Integration,1400,2400,1450,1830,1,Augite
 [Al/Ti/Cr H M2],Integration,3050,3800,3300,3585,1,Augite
 [Fe3+/Al3+ H+],Integration,3050,3800,3545,3680,1,Augite
+Overtones,Integration,1400,2400,1625,2100,1,F Olivine
+Antigorite,Absolute,3050,3800,,3692,1,F Olivine
+Fluid Inclusion,Absolute,3050,3800,,3400,1,F Olivine
+Peak F @3674 Integration,Integration,3475,3750,3665,3680,1,F Olivine
+Peak F @3674 Abs,Absolute,3475,3750,,3674,1,F Olivine
+Peak @3640 Integration,Integration,3475,3750,3626,3653,1,F Olivine
+Peak @3640 Abs,Absolute,3475,3750,,3640,1,F Olivine
+Peak @3598 Integration,Integration,3475,3750,3585,3610,1,F Olivine
+Peak @3598 Abs,Absolute,3475,3750,,3598,1,F Olivine
+Peak @3570 Integration,Integration,3475,3750,3583,3550,1,F Olivine
+Peak @3570 Abs,Absolute,3475,3750,,3570,1,F Olivine
+Peak @3535 Integration,Integration,3475,3750,3527,3542,1,F Olivine
+Peak @3535 Abs,Absolute,3475,3750,,3535,1,F Olivine
+All Defects 3500-3720,Integration,3050,3720,3500,3685,1,F Olivine
+Total H2O 3050-3720,Integration,0,,3000,4200,1,Smaragd
+H2O  5230-5315,Integration,3000,6000,5230,5315,1,Smaragd
+H2O  3800-3965,Integration,3000,4200,3800,3965,1,Smaragd
+H2O  3900-4045,Integration,3000,4200,3900,4045,1,Smaragd
+H2O  3630-3760,Integration,3000,4200,3630,3760,1,Smaragd
+H2O  3500-3540,Integration,3000,4200,3500,3540,1,Smaragd
+H2O  3200-3265,Integration,3000,4200,3200,3265,1,Smaragd
+H2O  7120-7160,Integration,3000,8000,7120,7160,1,Smaragd
+CO2  large,Integration,2200,2600,2318,2393,1,Smaragd
+CO2  peak 1,Integration,2200,2600,2353,2366,1,Smaragd
+Si-O Overtones,Integration,0,,1830,2250,1,Smaragd

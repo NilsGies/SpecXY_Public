@@ -128,11 +128,16 @@ if strcmp(settings(1).type,'Stacked') || strcmp(settings(1).type,'Default')
         end
 
         if  settings(n).PlotMean==true
+            if isfield(settings,'Legend') && isfield(settings(n).Legend,'Mean') && settings(n).Legend.Mean==true && isfield(settings,'LegendStr') && isfield(settings(n).LegendStr,'Mean') && isfield(settings,'LegendStr')
+                LegendStr=settings(n).LegendStr.Mean{:};
+            else
+                LegendStr='';
+            end
             if startsWith(settings(n).LineStyle.Mean{:},'A')
                 LineStyle=erase(settings(n).LineStyle.Mean{:},'A');
-                fill(axis2plot,data(n).x_signal,mean(data(n).y_signal,2,'omitnan')+offset(n),settings(n).Color.Mean,'LineWidth',settings(n).LineWidth.Mean,'LineStyle',LineStyle,'FaceAlpha',settings(n).FaceAlpha.Mean,'FaceColor',settings(n).Color.Mean)
+                fill(axis2plot,data(n).x_signal,mean(data(n).y_signal,2,'omitnan')+offset(n),settings(n).Color.Mean,'LineWidth',settings(n).LineWidth.Mean,'LineStyle',LineStyle,'FaceAlpha',settings(n).FaceAlpha.Mean,'FaceColor',settings(n).Color.Mean,'Tag',LegendStr)
             else
-                plt(n)=plot(axis2plot,data(n).x_signal,mean(data(n).y_signal,2,'omitnan')+offset(n),LineWidth=settings(n).LineWidth.Mean,Color=settings(n).Color.Mean,LineStyle=settings(n).LineStyle.Mean);
+                plt(n)=plot(axis2plot,data(n).x_signal,mean(data(n).y_signal,2,'omitnan')+offset(n),LineWidth=settings(n).LineWidth.Mean,Color=settings(n).Color.Mean,LineStyle=settings(n).LineStyle.Mean,Tag=LegendStr);
             end
         end
 
@@ -228,20 +233,25 @@ if strcmp(settings(1).type,'Stacked') || strcmp(settings(1).type,'Default')
         %         end
         if settings(1).PlotSpecNames==true && isfield(data(n),'Annotation')
 
+            if isfield(data(n),'AnnotationPos')
+                AnnotationPos=data(n).AnnotationPos;
+            else
+                AnnotationPos=min(settings(1).x_limits);
+            end
             if n==1
-                t(n)=text(axis2plot,min(settings(1).x_limits),offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
+                t(n)=text(axis2plot,AnnotationPos,offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
             elseif n==numel(data)
 
-                t(n)=text(axis2plot,min(settings(1).x_limits),offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
+                t(n)=text(axis2plot,AnnotationPos,offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
                 try
                     ylim(axis2plot,sort([t(1).Extent(2)*1.5 axis2plot.YLim(2)]))
                 catch
-                    t(n)=text(axis2plot,min(settings(1).x_limits),offset(1),data(1).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
+                    t(n)=text(axis2plot,AnnotationPos,offset(1),data(1).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
                     ylim(axis2plot,sort([t(1).Extent(2)*1.5 axis2plot.YLim(2)]))
 
                 end
             else
-                t(n)=text(axis2plot,min(settings(1).x_limits),offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
+                t(n)=text(axis2plot,AnnotationPos,offset(n),data(n).Annotation{:},'HorizontalAlignment','right','VerticalAlignment','top','Interpreter',settings(1).Annotation_interpreter);
             end
             if isfield(settings(1),'AnnotationFontSize')
                 t(n).FontSize=settings(1).AnnotationFontSize;
@@ -253,7 +263,10 @@ if strcmp(settings(1).type,'Stacked') || strcmp(settings(1).type,'Default')
 
     end
     if settings(1).PlotLegend==true
-        legend(axis2plot,flip(plt),flip(data.SampleName),'Location','eastoutside',Interpreter='none');
+        c_lines=flipud( findobj(axis2plot,'Type','line'));
+        [a b c]=unique(cell2table([{c_lines.Tag}' {c_lines.Color}',{c_lines.LineWidth}',{c_lines.LineStyle}']),'rows','stable');
+        legend(axis2plot,flipud(c_lines(b)),flipud(a.(1)),'Location','eastoutside',Interpreter='none');
+        %      legend(axis2plot,flip(plt),flip(data.SampleName),'Location','eastoutside',Interpreter='none');
     end
 
 
@@ -414,6 +427,7 @@ if isfield(settings,'YLabel')
 else
     axis2plot.ZLabel.String='';
 end
+
 if isfield(settings,'ZLabel')
     axis2plot.ZLabel.String=settings(1).YLabel;
 else

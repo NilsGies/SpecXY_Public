@@ -22,7 +22,7 @@ switch peakshape
         A=upsigmoid(x,pos,wid);
     case 11
         A=gaussian(x,pos,wid);
-    case 12
+    case {12,'lorentzian'}
         A=lorentzian(x,pos,wid);
     case 13
         A=GL(x,pos,wid,extra);
@@ -104,6 +104,7 @@ end % switch
 % for
 
 A=amp.*A;
+
 % ----------------------------------------------------------------------
 function g = gaussian(x,pos,wid)
 %  gaussian(X,pos,wid) = gaussian peak centered on pos, half-width=wid
@@ -359,7 +360,7 @@ end
 % ----------------------------------------------------------------------
 function y=d1gauss(x,p,w)
 % First derivative of Gaussian (alpha test)
-y=-(5.54518.*(x-p).*exp(-(2.77259.*(p-x).^2)./w^2))./w.^2;
+y=-(5.54518.*(x-p).*exp(-(2.77259.*(p-x).^2)./w.^2))./w.^2;
 y=y./max(y);
 % ----------------------------------------------------------------------
 
@@ -419,3 +420,12 @@ function y=Gompertz(t,Bo,Kh,L)
 %
 y=Bo*exp(-exp((Kh*exp(1)/Bo)*(L-t) +1));
 
+function [index,closestval]=val2ind(x,val)
+% Returns the index and the value of the element of vector x that is closest to val
+% If more than one element is equally close, returns vectors of indicies and values
+% Tom O'Haver (toh@umd.edu) October 2006
+% Examples: If x=[1 2 4 3 5 9 6 4 5 3 1], then val2ind(x,6)=7 and val2ind(x,5.1)=[5 9]
+% [indices values]=val2ind(x,3.3) returns indices = [4 10] and values = [3 3]
+dif=abs(x-val);
+index=find((dif-min(dif))==0);
+closestval=x(index);

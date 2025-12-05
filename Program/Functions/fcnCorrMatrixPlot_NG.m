@@ -1,5 +1,5 @@
 
-function [fig] = fcnCorrMatrixPlot_NG(A, VarName, caption,classes,cmap,marker)
+function [fig] = fcnCorrMatrixPlot_NG(A, VarName,caption,classes,cmap,marker)
 % This function produces a correlation matrix scatterplot with
 % least-squared fitted lines.
 % Input A is a mxn matrix (m: # of observations, n: # of variables).
@@ -22,8 +22,6 @@ function [fig] = fcnCorrMatrixPlot_NG(A, VarName, caption,classes,cmap,marker)
 % Created using R2015a
 % R1: (1) Ignore data pairs with NaNs. (2) Sample size added on plots.
 %     (3) No statistics toolbox needed. (May 2020)
-% further additions Nils B. Gies
-
 scrsz = get(0,'ScreenSize');
 [~,n] = size(A);   % # of rows and columns of the input matrix
 if n ~= length(VarName)
@@ -127,6 +125,7 @@ for i = 1:n-1      % Loop for rows
     else
         plot(X,Y,'o','MarkerSize',symbolsize);  % Marker shape: circle
     end
+   
     if exist('classes','var')
         colormap(cmap)
     end
