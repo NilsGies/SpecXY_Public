@@ -8,7 +8,7 @@ SpecXY is a user-friendly software solution for preparing
  2) The second module SpecDB
  is designed as a spectra database with the ability to perform manipulations, advanced peak deconvolution, calculations (e.g.H2O quantification), match unknown spectra or visualise and compare important features in selected spectra. 
  
- 3) GeoCPlot allows to classify data and helps to visualise data in correlation matrices.
+ 3) GeoCPlot allows to classify data and helps to visualise data in scatterplot matrices.
  
  
 This repository contains the source code of the latest stable version of SpecXY, binaries for MacOS and Windows, example data.  Furthermore, the preliminary documentation & user guide, which is still a work in progress and will be updated in the future, gives an introduction to the software, common workflows and the API.
